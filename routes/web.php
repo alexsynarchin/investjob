@@ -27,3 +27,28 @@ Route::get('/import/test', [TestController::class, 'index'])->name('import.test'
 Route::get('/import/rezume', [TestController::class,'rezume']) -> name('import.rezume');
 Route::get('/import/work-places', [TestController::class,'otrasli']) -> name('import.otrasli');
 Route::get('/import/users', [TestController::class, 'users']) ->name('import.users');
+
+//Site
+use App\Http\Controllers\Site\SiteController;
+
+
+//resume
+use App\Http\Controllers\Site\ResumeController;
+Route::get('/podbor_personala',[ResumeController::class, 'index']) -> name('site.resume.index');
+
+//vacancy
+use App\Http\Controllers\Site\VacancyController;
+Route::get('/rabota',[VacancyController::class, 'index']);
+
+//uslugi
+use App\Http\Controllers\Site\ServiceController;
+Route::get('/uslugi', [ServiceController::class, 'index']);
+
+//kompanii
+use App\Http\Controllers\Site\CompanyController;
+Route::get('/kompanii', [CompanyController::class, 'index']);
+
+//uchebnye-tsentry
+use App\Http\Controllers\Site\LearningCenterController;
+Route::get('/uchebnye-tsentry', [LearningCenterController::class, 'index']);
+
