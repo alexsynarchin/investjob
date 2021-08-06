@@ -1,0 +1,24 @@
+.page-header {
+    padding-bottom: 25px;
+    &__phone {
+        display: flex;
+        justify-content: flex-end;
+        &-link {
+            font-family: $font-family-exo;
+            display: block;
+            font-weight: 800;
+            color: $blue-color;
+            font-size: 30px;
+            text-decoration: none;
+            &:focus {
+                color: $blue-color;
+            }
+            &:hover {
+                color: $orange-color;
+            }
+        }
+        &-text {
+            font-family: $font-family-exo;
+        }
+    }
+}

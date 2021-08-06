@@ -1,0 +1,12 @@
+.page-header-top {
+
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    &__right {
+        display:flex;
+        align-items: center;
+    }
+
+}

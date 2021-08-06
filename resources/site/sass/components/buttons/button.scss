@@ -1,0 +1,30 @@
+.btn {
+    font-family: $font-family-exo;
+    border-radius: 0;
+    border-width: 2px;
+    border-style: solid;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+.button {
+    background-color:$blue-bg-color;
+    color: #fff;
+    &:hover, &:focus {
+        color:#fff;
+    }
+    &:hover {
+        opacity:0.8;
+    }
+}
+.button-orange {
+    color: #fff;
+    background-color: #f77a4a;
+    &:hover, &:focus {
+        color: #fff;
+    }
+    &:hover {
+        background-color: rgba(247,122,74,0.9);
+    }
+}

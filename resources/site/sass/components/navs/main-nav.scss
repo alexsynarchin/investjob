@@ -1,0 +1,24 @@
+.main-nav {
+    background-color: $blue-bg-color;
+    font-family: $font-family-exo;
+    font-weight: 600;
+    font-size: 17px;
+    &__list {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    &__link {
+        display: block;
+        padding: 15px;
+        color: #fff;
+        text-decoration: none;
+
+        &:hover, &:focus, &--active {
+            background-color: #69baea;
+            color:#fff;
+            text-decoration: none;
+        }
+    }
+}

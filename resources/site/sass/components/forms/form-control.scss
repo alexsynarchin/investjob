@@ -1,0 +1,26 @@
+.form-control {
+    border: 1px solid #CACACA;
+    height: 40px;
+    padding-right: 18px;
+    padding-left: 18px;
+    border-radius: 0;
+    font-size: 16px;
+    &:focus {
+        border: 1px solid #409EFF;
+        outline: none;
+        box-shadow: none !important;
+    }
+    @include media-breakpoint-down(md) {
+        font-size: 14px;
+    }
+}
+.el-input {
+    &__inner {
+        font-size: 16px;
+        height: 40px;
+        padding-right: 18px;
+        padding-left: 18px;
+        border: 1px solid #CACACA;
+        border-radius: 0;
+    }
+}

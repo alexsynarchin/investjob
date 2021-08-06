@@ -1,0 +1,45 @@
+@import "~bootstrap/scss/bootstrap";
+@import '~element-ui/lib/theme-chalk/index.css';
+@import "variables";
+//Components
+@import "components/scaffolding";
+
+//Page-header
+@import "components/page-header/page-header";
+@import "components/page-header/page-header-top";
+//Page-footer
+@import "components/base/page-footer";
+//navs
+@import "components/navs/main-nav";
+@import "components/navs/tabs";
+//Base
+@import "components/base/icons";
+//Buttons
+@import "components/buttons/button";
+@import "components/buttons/btn-link";
+
+// Form
+@import "components/forms/form-control";
+@import "components/forms/form-checkbox";
+@import "components/forms/form-conf-politics";
+//Modals
+@import "components/modal/modal";
+
+//Auth
+@import "components/auth/page-header-auth";
+@import "components/auth/auth";
+@import "components/auth/social-auth";
+//Register
+@import "components/register/register-types";
+
+//City
+@import "components/city/city-select";
+
+//Search
+@import "components/search/header-search";
+
+//Profile
+@import "components/profile/page-header-profile";
+
+//Main-page
+@import "components/main-page/mp-slider";

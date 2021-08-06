@@ -1,0 +1,16 @@
+.page-header-auth {
+    font-family: $font-family-exo;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    &__link {
+        padding: 0;
+
+
+    }
+    &__icon {
+        width: 10px;
+        height: 12px;
+        fill: $dark-blue;
+    }
+}

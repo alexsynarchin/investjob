@@ -1,0 +1,21 @@
+.city-select {
+
+    &__text {
+        line-height: 1;
+        font-size: 13px;
+    }
+    &__link {
+        line-height: 1;
+        display: inline-block;
+        margin-left: 4px;
+        font-size: 13px;
+        text-decoration: none;
+        color: $blue-color;
+        border-bottom: 1px dashed $blue-color;
+        &:hover, &:focus {
+            color: $blue-color;
+            text-decoration: none;
+            border: 0;
+        }
+    }
+}

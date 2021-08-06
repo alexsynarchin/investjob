@@ -1,0 +1,29 @@
+.page-header-profile {
+    font-family: $font-family-exo;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    &__link {
+        display: inline-block;
+        font-size: 14px;
+        color: $blue-color;
+        text-decoration: none;
+        &:hover, &:focus {
+            color: $blue-color;
+        }
+    }
+    &__logout {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        border: 0;
+        font-size: 14px;
+        padding: 0;
+    }
+    &__icon {
+        margin-right: 6px;
+        fill: $dark-blue;
+        width: 14px;
+        height: 14px;
+    }
+}
