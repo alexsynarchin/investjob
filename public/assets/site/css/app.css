@@ -11010,6 +11010,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 .page-footer {
   background-color: #2197DD;
   padding: 40px 0;
+  color: #fff;
+  font-size: 13px;
 }
 
 .main-nav {
@@ -11139,6 +11141,24 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 .mobile-nav-panel__line--on:after {
   transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.footer-nav__list {
+  columns: 3;
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  list-style-type: none;
+  color: #fff;
+  padding-left: 0;
+  margin-left: 0;
+}
+.footer-nav__link {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-nav__link:hover, .footer-nav__link:focus {
+  text-decoration: underline;
+  color: #fff;
 }
 
 .icon__phone {
@@ -11624,9 +11644,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   list-style-type: none;
   margin-left: 0;
   padding-left: 0;
-  columns: 4;
-  -webkit-columns: 4;
-  -moz-columns: 4;
 }
 .modal-regions-list__item {
   cursor: pointer;
