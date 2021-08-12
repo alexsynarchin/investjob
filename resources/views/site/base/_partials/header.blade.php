@@ -1,7 +1,7 @@
 <header class="page-header">
     <section class="page-header-top container">
         <div class="page-header-top__city">
-            <city-select></city-select>
+            <header-city-select></header-city-select>
         </div>
         <div class="page-header-top__right">
             <button class="btn button" data-bs-toggle="modal" data-bs-target="#order-call">

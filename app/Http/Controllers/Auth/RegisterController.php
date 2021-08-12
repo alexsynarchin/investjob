@@ -22,4 +22,11 @@ class RegisterController extends Controller
             'password' => Hash::make(Str::random(8))
         ]);
     }
+    public function selectUserType(Request $request)
+    {
+        $user = Auth::user();
+        $user->profile_type = $request->get('type');
+
+        $user -> save();
+    }
 }

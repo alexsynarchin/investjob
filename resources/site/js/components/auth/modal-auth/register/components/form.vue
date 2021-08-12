@@ -51,7 +51,7 @@ export default {
             if(this.type === 'employer') {
                 title= 'Регистрация в базе работодателей'
             }
-            if(this.type === 'learning_center') {
+            if(this.type === 'learning-center') {
                 title = 'Регистрация в базе учебных центров'
             }
             return title;

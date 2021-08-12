@@ -10,6 +10,7 @@
             </section>
             @include('site.base._partials.footer')
             @include('site.base._partials.modal')
+            <loading v-if="isLoading"></loading>
         </section>
         <script>
             window.App = {!! json_encode([

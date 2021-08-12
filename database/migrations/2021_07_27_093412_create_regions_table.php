@@ -16,8 +16,9 @@ class CreateRegionsTable extends Migration
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table ->string('slug')->nullable();
-            $table -> boolean('published')->default(true);
+            $table->string('slug')->nullable();
+            $table->boolean('active')->default(true);
+            $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->bigInteger('import_id')->unsigned()->nullable();
             $table->timestamps();
         });

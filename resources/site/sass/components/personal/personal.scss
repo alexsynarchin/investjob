@@ -1,0 +1,10 @@
+.personal {
+    &__register-type {
+        .el-alert__title {
+            font-size: 1.15rem;
+        }
+        .el-alert__description {
+            font-size: 1rem;
+        }
+    }
+}

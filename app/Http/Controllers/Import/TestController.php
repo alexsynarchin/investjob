@@ -12,7 +12,18 @@ class TestController extends Controller
     public function index()
     {
         $xml = simplexml_load_file(public_path('xml_import/regions.xml'));
-
+        $i=0;
+        foreach ($xml ->  Каталог -> Товары -> Товар as $item) {
+            echo $item -> Группы -> Ид;
+            echo "<br>";
+            echo $item->ЗначенияСвойств ->ЗначенияСвойства[1] -> Значение;
+            echo "<br>";
+            echo "<pre>";
+            print_r($item);
+            echo "</pre>";
+            $i++;
+        }
+        /*
         foreach ($xml -> Классификатор -> Группы -> Группа as $item) {
 
             if($item -> Ид) {
@@ -23,7 +34,14 @@ class TestController extends Controller
                 ]);
                 echo "success <br>";
             }
-        }
+        } */
+    }
+    function xml2array ( $xmlObject, $out = array () )
+    {
+        foreach ( (array) $xmlObject as $index => $node )
+            $out[$index] = ( is_object ( $node ) ) ? xml2array ( $node ) : $node;
+
+        return $out;
     }
     public function otrasli()
     {
@@ -42,11 +60,27 @@ class TestController extends Controller
     public function rezume()
     {
         $xml = simplexml_load_file(public_path('xml_import/rezume.xml'));
-        foreach ($xml -> Классификатор -> Свойства -> Свойство as $item) {
+        /*foreach ($xml -> Классификатор -> Свойства -> Свойство as $item) {
 
            echo "<pre>";
            print_r($item);
            echo "</pre>";
+        }*/
+        $i = 0;
+        foreach ($xml -> Каталог -> Товары -> Товар as $item) {
+            if($i === 3) {
+                break;
+            }
+
+            foreach ($item->ЗначенияСвойств as $option) {
+                echo "<pre>";
+                print_r($item);
+                echo "</pre>";
+            }
+          /*  echo "<pre>";
+            print_r($item->ЗначенияСвойств);
+            echo "</pre>";*/
+            $i++;
         }
     }
     public function users()

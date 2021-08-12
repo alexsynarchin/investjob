@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\SocialAccount;
+use App\Models\Account\SocialAccount;
 use App\Models\User;
 use App\Services\Auth\SocialAuth;
 use Auth;

@@ -1,0 +1,15 @@
+.modal-regions-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    columns: 4;
+    -webkit-columns: 4;
+    -moz-columns: 4;
+    &__item {
+        cursor: pointer;
+        color: $blue-color;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

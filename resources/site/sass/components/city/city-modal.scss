@@ -1,0 +1,33 @@
+.city-modal {
+    &__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-controls {
+            display: flex;
+            align-items: center;
+        }
+    }
+    &__title {
+        margin: 0;
+    }
+    &__current {
+        svg {
+            fill: $orange-color;
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &__auto {
+        margin-left: 8px;
+        font-size: 15px;
+        text-decoration: none;
+        color: $blue-color;
+        border-bottom: 1px dashed $blue-color;
+        &:hover, &:focus {
+            color: $blue-color;
+            text-decoration: none;
+            border: 0;
+        }
+    }
+}

@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Import;
 
 use Illuminate\Console\Command;
 
-class TestImport extends Command
+class ImportResume extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'test:import';
+    protected $signature = 'import:resume';
 
     /**
      * The console command description.
@@ -37,7 +37,6 @@ class TestImport extends Command
      */
     public function handle()
     {
-        echo "test";
-        return "test";
+        return 0;
     }
 }

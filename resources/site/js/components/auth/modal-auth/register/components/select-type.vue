@@ -30,7 +30,7 @@ export default {
                     label:'Ищу персонал'
                 },
                 {
-                    value:'learning_center',
+                    value:'learning-center',
                     label:'Я учебный центр'
                 },
             ]

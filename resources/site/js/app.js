@@ -1,14 +1,19 @@
 require('./bootstrap');
+require('./script')
 import Vue from "vue";
 import ElementUI from 'element-ui';
 Vue.use(ElementUI);
 import lang from 'element-ui/lib/locale/lang/ru-RU'
 import locale from 'element-ui/lib/locale'
 locale.use(lang);
-Vue.component('city-select', require('./components/city-select/index').default);
+Vue.component('header-city-select', require('./components/city-select/header/index').default);
+Vue.component('modal-city-select', require('./components/city-select/modal/index').default);
 Vue.component('header-search',require('./components/header-search/index').default);
 Vue.component('header-auth',require('./components/auth/header-auth/index').default);
 Vue.component('modal-auth',require('./components/auth/modal-auth/index').default);
+Vue.component('personal', require('./views/personal/index').default);
+Vue.component('loading', require('./components/fakeLoading').default);
+
 Vue.directive('phone', {
     bind(el) {
         el.oninput = function(e) {
@@ -31,6 +36,11 @@ Vue.directive('phone', {
 })
 const app = new Vue({
     el: '#app',
+    data() {
+        return {
+            isLoading: true,
+        }
+    },
     computed: {
         signedIn() {
             return window.App.signedIn;

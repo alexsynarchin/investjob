@@ -22,3 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 use App\Http\Controllers\Auth\SocialController;
 Route::get('/social-auth/{provider}', [SocialController::class,'redirectToProvider'])->name('auth.social');
 Route::get('/social-auth/{provider}/callback', [SocialController::class,'handleProviderCallback'])->name('auth.social.callback');
+
+//Regions
+use App\Http\Controllers\Api\Site\CityController;
+Route::get('/regions-list', [CityController::class,'getRegions'])->name('regions-list');
+

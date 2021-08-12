@@ -11,4 +11,20 @@ class SiteController extends Controller
     {
 
     }
+    public function professional_standards()
+    {
+        return view('site.inner.inner');
+    }
+    public function about()
+    {
+        return view('site.inner.inner');
+    }
+    public function oprof()
+    {
+        return view('site.inner.inner');
+    }
+    public function contact()
+    {
+        return view('site.inner.inner');
+    }
 }

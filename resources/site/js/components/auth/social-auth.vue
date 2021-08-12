@@ -30,13 +30,10 @@
 </template>
 <script>
 export default {
-    props:['building_id'],
     methods:{
         handleSocialAuth(type) {
             let url = '/api/social-auth/' + type;
             window.location.href = '/api/social-auth/' + type;
-
-
         }
     }
 }

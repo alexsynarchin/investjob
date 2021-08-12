@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Account;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ReferenceBook extends Model
+class Profile extends Model
 {
     use HasFactory;
 }

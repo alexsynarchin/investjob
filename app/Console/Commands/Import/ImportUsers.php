@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Import;
 
 use Illuminate\Console\Command;
 use DB;
@@ -42,10 +42,11 @@ class ImportUsers extends Command
         foreach ($users as $user) {
             $fields = DB::connection('mysql_import') -> table('b_uts_user')->where('VALUE_ID', $user -> ID) -> first();
 
-            DB::table('users')->insert([
+            DB::table('users')->insertOrIgnore([
                 'login' => $user->LOGIN,
                 'name' => $user->NAME,
                 'surname' => $user->LAST_NAME,
+                'patronymic'=> $user-> SECOND_NAME,
                 'email' => $user->EMAIL ? $user->EMAIL : null,
                 'deprecated_password' => $user->PASSWORD,
                 'import_id' => $user->ID,

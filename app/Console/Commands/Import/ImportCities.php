@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Import;
 
-use Illuminate\Console\Command;
 use DB;
+use Illuminate\Console\Command;
 
-class ImportIndustries extends Command
+class ImportCities extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'import:industries';
+    protected $signature = 'import:cities';
 
     /**
      * The console command description.
@@ -38,30 +38,28 @@ class ImportIndustries extends Command
      */
     public function handle()
     {
-        $xml = simplexml_load_file(public_path('xml_import/work_places.xml'));
+        $xml = simplexml_load_file(public_path('xml_import/regions.xml'));
         foreach ($xml -> Классификатор -> Группы -> Группа as $item) {
-            DB::table('reference_books') -> insert([
-                'name' => $item -> Наименование,
-                'slug' => $item -> БитриксКод,
-                'import_id' => $item -> Ид,
-                'type' => 'industries',
-            ]);
+            if($item -> Ид) {
+                DB::table('regions') -> insert([
+                    'name' => $item -> Наименование,
+                    'slug' => $item -> БитриксКод,
+                    'import_id' => $item -> Ид
+                ]);
+            }
         }
         foreach ($xml -> Каталог -> Товары -> Товар as $item) {
-            $category = DB::table('reference_books')
+            $category = DB::table('regions')
                 ->where('import_id', $item -> Группы -> Ид)
-                ->where('type', 'industries')
                 ->first();
             if($category) {
-                DB::table('reference_books') -> insert([
+                DB::table('regions') -> insert([
                     'name' => $item -> Наименование,
                     'slug' => $item -> ЗначенияСвойств -> ЗначенияСвойства[1] -> Значение,
                     'import_id' => $item -> Ид,
-                    'type' => 'industries',
                     'parent_id' => $category -> id
                 ]);
             }
-
         }
     }
 }

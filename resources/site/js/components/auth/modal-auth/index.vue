@@ -43,7 +43,7 @@ export default {
         },
         closeModal() {
             $('#auth-modal').modal('hide');
-        }
+        },
     },
     mounted() {
         bus.$on('open-modal', this.openModal);

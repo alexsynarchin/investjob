@@ -48,7 +48,7 @@ import { Errors } from  '@/components/common/services/errors.js'
                 if(this.type === 'employer') {
                     text = 'Помогите оформить вакансию'
                 }
-                if(this.type === 'learning_center') {
+                if(this.type === 'learning-center') {
                     text = 'Помогите зарегистрироваться'
                 }
                 return text;
@@ -61,7 +61,7 @@ import { Errors } from  '@/components/common/services/errors.js'
                 if(this.type === 'employer') {
                     title= 'Составление вакансии нашим специалистом'
                 }
-                if(this.type === 'learning_center') {
+                if(this.type === 'learning-center') {
                     title = 'Регистрация нашим специалистом'
                 }
                 return title;

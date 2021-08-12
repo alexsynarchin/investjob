@@ -15,6 +15,15 @@ class CreateResumesTable extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('agent_id')->unsigned()->nullable();
+            $table->string('name');
+            $table->string('slug');
+            $table->text('description')->nullable();
+            $table->string('driver_license')->nullable();
+            $table->string('car')->nullable();
+            $table->text('recommendation')->nullable();
             $table->timestamps();
         });
     }

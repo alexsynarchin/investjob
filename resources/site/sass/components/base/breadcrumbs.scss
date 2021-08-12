@@ -1,0 +1,31 @@
+.breadcrumbs {
+    margin-top: 20px;
+    padding-bottom: 15px;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    color: #A5A5A5;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    @include media-breakpoint-up(lg) {
+        margin-top: 49px;
+        margin-bottom: 19px;
+    }
+    &__icon {
+        margin-left: 14px;
+        margin-right: 14px;
+        width: 5px;
+        height: 10px;
+    }
+    &__item {
+
+    }
+    &__link {
+        color: $body-color;
+        &:hover {
+            color: $body-color;
+        }
+    }
+}

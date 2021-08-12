@@ -14,3 +14,4 @@
     </div>
 </div>
 <modal-auth></modal-auth>
+<modal-city-select></modal-city-select>
