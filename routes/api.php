@@ -25,7 +25,12 @@ Route::get('/social-auth/{provider}/callback', [SocialController::class,'handleP
 
 //Regions
 use App\Http\Controllers\Api\Site\CityController;
-Route::get('/regions-list', [CityController::class,'getRegions'])->name('regions-list');
+Route::get('/regions-list', [CityController::class,'getRegions'])->name('regions.list');
+
+//Search
+use App\Http\Controllers\Api\Site\SearchController;
+Route::get('/search/autocomplete/{type}', [SearchController::class,'autocomplete'])->name('search.autocomplete');
+
 
 //Import
 use App\Http\Controllers\Api\Site\SiteController;

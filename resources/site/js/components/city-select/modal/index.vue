@@ -10,39 +10,45 @@
                     </button>
                 </div>
                 <div class="modal-body ">
-                    <section class="city-modal__heading">
-                        <h5 class="modal-title city-modal__title">Выберите город</h5>
+                    <section class="city-modal__heading mb-3">
+                        <h5 class="modal-title city-modal__title">{{title}}</h5>
                         <div class="city-modal__heading-controls">
                             <div class="city-modal__current">
                                 <svg viewBox="0 0 24 24">
                                     <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-location"></use>
                                 </svg>
                                 <span class="city-modal__current-label">Текущий город:</span>
-                                <span class="city-modal__current-value">{{current}}</span>
+                                <span class="city-modal__current-value">{{current_city}}</span>
                             </div>
                             <a href="" class="city-modal__auto">
                                 Определить автоматически
                             </a>
                         </div>
                     </section>
-                    <ul class="modal-regions-list">
-                        <li class="modal-regions-list__item" v-for="(item, index) in regions">
-                            {{item.name}}
-                        </li>
-                    </ul>
+                    <div class="mb-3">
+                        <autocomplete :placeholder="'Поиск по названию города'" v-model="city"></autocomplete>
+                    </div>
+                    <regions :regions="regions"></regions>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import autocomplete from "@/components/autocomplete/index.vue"
+import regions from "./components/regions";
 import { bus } from "../bus";
 export default {
+    components:{
+        autocomplete,regions
+    },
     data() {
         return {
             showModal:false,
-            current:'Уфа',
+            current_city:'Уфа',
             regions: [],
+            city:null,
+            title:"Выберите регион",
         }
     },
     methods: {

@@ -2,10 +2,26 @@
     list-style-type: none;
     margin-left: 0;
     padding-left: 0;
-
+    $cols:2;
+    columns: $cols;
+    -webkit-columns: $cols;
+    -moz-columns: $cols;
+    @include media-breakpoint-up(md) {
+        $cols:3;
+        columns: $cols;
+        -webkit-columns: $cols;
+        -moz-columns: $cols;
+    }
+    @include media-breakpoint-up(lg) {
+        $cols:4;
+        columns: $cols;
+        -webkit-columns: $cols;
+        -moz-columns: $cols;
+    }
     &__item {
         cursor: pointer;
         color: $blue-color;
+        font-size: 0.95rem;
         &:hover {
             text-decoration: underline;
         }

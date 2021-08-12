@@ -4,6 +4,12 @@
 //Components
 @import "components/scaffolding";
 @import "components/preloader";
+
+//Base
+@import "components/base/icons";
+@import "components/base/breadcrumbs";
+@import "components/base/clean-list";
+
 //Page-header
 @import "components/page-header/page-header";
 @import "components/page-header/page-header-top";
@@ -14,9 +20,8 @@
 @import "components/navs/tabs";
 @import "components/navs/mobile-nav-panel";
 @import "components/navs/footer-nav";
-//Base
-@import "components/base/icons";
-@import "components/base/breadcrumbs";
+
+
 //Buttons
 @import "components/buttons/button";
 @import "components/buttons/btn-link";
@@ -25,6 +30,7 @@
 @import "components/forms/form-control";
 @import "components/forms/form-checkbox";
 @import "components/forms/form-conf-politics";
+@import "components/forms/search-autocomplete";
 //Modals
 @import "components/modal/modal";
 
