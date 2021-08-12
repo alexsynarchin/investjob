@@ -1,3 +1,3 @@
 <!-- Scripts -->
-<script src="{{ asset('assets/site/js/app.js') }}?ver=92"></script>
+<script src="{{ asset('assets/site/js/app.js') }}?ver=97"></script>
 <script src="https://kit.fontawesome.com/9b6eb0a8fc.js" crossorigin="anonymous"></script>

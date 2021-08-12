@@ -27,3 +27,7 @@ Route::get('/social-auth/{provider}/callback', [SocialController::class,'handleP
 use App\Http\Controllers\Api\Site\CityController;
 Route::get('/regions-list', [CityController::class,'getRegions'])->name('regions-list');
 
+//Import
+use App\Http\Controllers\Api\Site\SiteController;
+Route::get('/import',[SiteController::class,'import'])->name('test.import');
+

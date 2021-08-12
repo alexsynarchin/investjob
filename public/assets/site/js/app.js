@@ -7310,8 +7310,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      text: "Импорт данных тип инфоблока: Вакансии и резюме. Инфоблок: Вакансии"
+      text: "Импорт данных тип инфоблока: Вакансии и резюме. Инфоблок: Вакансии",
+      timing: null
     };
+  },
+  methods: {
+    runTiming: function runTiming() {
+      // Обязательно очищаем предыдущий таймер.
+      // Запускаем новый таймер по смене баннеров.
+      this.timing = setInterval(this["import"], 5000);
+    },
+    "import": function _import() {
+      var _this = this;
+
+      axios.get('/api/import').then(function (response) {
+        _this.text = response.data;
+
+        if (!_this.timing) {
+          // а) то необходимо запустить наш таймер.
+          _this.runTiming(); // б) незамедлительно показать первый баннер.
+
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this["import"]();
   }
 });
 

@@ -14,7 +14,32 @@ export default {
     data() {
         return {
             text: "Импорт данных тип инфоблока: Вакансии и резюме. Инфоблок: Вакансии",
+            timing: null,
         }
+    },
+    methods: {
+        runTiming() {
+            // Обязательно очищаем предыдущий таймер.
+
+
+            // Запускаем новый таймер по смене баннеров.
+            this.timing = setInterval(this.import, 5000)
+        },
+        import() {
+            axios.get('/api/import')
+            .then((response) => {
+                this.text = response.data;
+                if (!this.timing) {
+                    // а) то необходимо запустить наш таймер.
+                    this.runTiming();
+
+                    // б) незамедлительно показать первый баннер.
+                }
+            })
+        }
+    },
+    mounted() {
+        this.import();
     }
 }
 </script>
