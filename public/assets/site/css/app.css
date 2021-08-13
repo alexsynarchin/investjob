@@ -11358,6 +11358,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   left: 0;
   background-color: #fff;
   z-index: 20;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
 }
 .search-autocomplete__title {
   font-size: 0.75rem;
@@ -11370,7 +11371,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   font-size: 14px;
 }
 .search-autocomplete__item:hover {
-  background-color: #FEF4F6;
+  background-color: rgba(204, 204, 204, 0.55);
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .search-autocomplete__item {

@@ -26,6 +26,8 @@ Route::get('/social-auth/{provider}/callback', [SocialController::class,'handleP
 //Regions
 use App\Http\Controllers\Api\Site\CityController;
 Route::get('/regions-list', [CityController::class,'getRegions'])->name('regions.list');
+Route::get('/cities-list/{region}',[CityController::class, 'getCities']) ->name('regions.city.list');
+Route::post('/regions/select-city/{slug}', [CityController::class, 'selectCity']) ->name('regions.select.city');
 
 //Search
 use App\Http\Controllers\Api\Site\SearchController;

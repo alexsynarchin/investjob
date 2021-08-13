@@ -39,7 +39,11 @@ const app = new Vue({
     data() {
         return {
             isLoading: true,
+            city:window.App.city
         }
+    },
+    mounted() {
+        console.log(window.App.city)
     },
     computed: {
         signedIn() {
@@ -47,6 +51,6 @@ const app = new Vue({
         },
         user(){
             return  window.App.user;
-        }
+        },
     },
 });

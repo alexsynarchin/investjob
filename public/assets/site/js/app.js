@@ -7190,6 +7190,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   model: {
     prop: 'searchquery',
@@ -7224,8 +7226,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     autocompleteName: function autocompleteName(data) {
       this.$emit('selectName', data);
-      this.streets = [];
-      this.names = [];
+      this.items = [];
     }
   }
 });
@@ -7338,6 +7339,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -7351,17 +7354,22 @@ __webpack_require__.r(__webpack_exports__);
       showModal: false,
       current_city: 'Уфа',
       regions: [],
-      city: null,
+      city: this.$root.city.name,
       title: "Выберите регион"
     };
   },
   methods: {
+    selectCity: function selectCity(city) {
+      this.$root.city = city;
+      axios.post('/api/regions/select-city/' + city.slug);
+    },
     openModal: function openModal() {
       this.showModal = true;
       $('#city-modal').modal('show');
     },
     closeModal: function closeModal() {
       $('#city-modal').modal('hide');
+      this.city = null;
     },
     getRegions: function getRegions() {
       var _this = this;
@@ -7650,8 +7658,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
   el: '#app',
   data: function data() {
     return {
-      isLoading: true
+      isLoading: true,
+      city: window.App.city
     };
+  },
+  mounted: function mounted() {
+    console.log(window.App.city);
   },
   computed: {
     signedIn: function signedIn() {
@@ -107078,7 +107090,13 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v(_vm._s(item) + '"')]
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(item.name) +
+                          "\n            "
+                      )
+                    ]
                   )
                 }),
                 0
@@ -107113,7 +107131,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "city-select" }, [
     _c("span", { staticClass: "city-select__text" }, [
-      _vm._v("\n        Ваш город: Уфа\n    ")
+      _vm._v("\n        Ваш город: " + _vm._s(_vm.$root.city.name) + "\n    ")
     ]),
     _vm._v(" "),
     _c(
@@ -107265,7 +107283,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "city-modal__current-value" }, [
-                        _vm._v(_vm._s(_vm.current_city))
+                        _vm._v(_vm._s(_vm.$root.city.name))
                       ])
                     ]),
                     _vm._v(" "),
@@ -107286,7 +107304,11 @@ var render = function() {
                   { staticClass: "mb-3" },
                   [
                     _c("autocomplete", {
-                      attrs: { placeholder: "Поиск по названию города" },
+                      attrs: {
+                        type: "regions",
+                        placeholder: "Поиск по названию города"
+                      },
+                      on: { selectName: _vm.selectCity },
                       model: {
                         value: _vm.city,
                         callback: function($$v) {

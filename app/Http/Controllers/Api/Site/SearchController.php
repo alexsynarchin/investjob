@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function autocomplete(Request $request)
+    public function autocomplete($type, Request $request)
     {
-        $search= $request->get('search');
-        $cities = Region::where('parent_id', '!=', null) -> where('name', 'like', '%' . $search . '%') ->get();
-        return $cities;
+        $search =new SearchService();
+        $data = ['type' => $type, 'search' => $request->get('search')];
+        $result = $search -> autocomplete($data);
+        return $result;
     }
 }

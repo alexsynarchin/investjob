@@ -15,7 +15,8 @@
         <script>
             window.App = {!! json_encode([
             'user' => Auth::user(),
-            'signedIn' => Auth::check()
+            'signedIn' => Auth::check(),
+            'city' => json_decode(Cookie::get('city'))
             ]) !!} ;
         </script>
         @include('site.base._partials.scripts')

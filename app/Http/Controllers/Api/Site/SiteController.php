@@ -9,7 +9,7 @@ class SiteController extends Controller
 {
     public function import()
     {
-        $text = "Импорт данных тип инфоблока: Вакансии и резюме. Инфоблок: Резюме";
+        $text = "Импорт данных тип инфоблока: Вакансии и резюме. Инфоблок: Справочник мест учебы";
         return $text;
     }
 }

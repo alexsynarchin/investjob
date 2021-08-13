@@ -5,7 +5,9 @@
                 type="text" :placeholder="placeholder"/>
         <div class="search-autocomplete__panel" v-if=" items.length > 0 ">
             <ul class="search-autocomplete__list" v-if="items.length > 0">
-                <li class="search-autocomplete__item" v-for="item in items" @click.prevent="autocompleteName(item)">{{item}}"</li>
+                <li class="search-autocomplete__item" v-for="item in items" @click.prevent="autocompleteName(item)">
+                    {{item.name}}
+                </li>
             </ul>
         </div>
     </div>
@@ -42,8 +44,7 @@
             },
             autocompleteName(data) {
             this.$emit('selectName', data);
-              this.streets = [];
-              this.names = [];
+             this.items = [];
             }
         },
     }

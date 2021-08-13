@@ -18,7 +18,7 @@
                                     <use xlink:href="/assets/site/images/sprites.svg?ver=44#sprite-location"></use>
                                 </svg>
                                 <span class="city-modal__current-label">Текущий город:</span>
-                                <span class="city-modal__current-value">{{current_city}}</span>
+                                <span class="city-modal__current-value">{{$root.city.name}}</span>
                             </div>
                             <a href="" class="city-modal__auto">
                                 Определить автоматически
@@ -26,7 +26,9 @@
                         </div>
                     </section>
                     <div class="mb-3">
-                        <autocomplete :placeholder="'Поиск по названию города'" v-model="city"></autocomplete>
+                        <autocomplete @selectName="selectCity" :type="'regions'"
+                                      :placeholder="'Поиск по названию города'" v-model="city">
+                        </autocomplete>
                     </div>
                     <regions :regions="regions"></regions>
                 </div>
@@ -47,17 +49,23 @@ export default {
             showModal:false,
             current_city:'Уфа',
             regions: [],
-            city:null,
+            city: this.$root.city.name,
             title:"Выберите регион",
         }
     },
     methods: {
+        selectCity(city) {
+            this.$root.city = city;
+            axios.post('/api/regions/select-city/' + city.slug)
+
+        },
         openModal() {
             this.showModal=true;
             $('#city-modal').modal('show');
         },
         closeModal() {
             $('#city-modal').modal('hide');
+                this.city = null;
         },
         getRegions() {
             axios.get('/api/regions-list')

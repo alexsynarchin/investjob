@@ -1,7 +1,7 @@
 <template>
     <section class="city-select">
         <span class="city-select__text">
-            Ваш город: Уфа
+            Ваш город: {{$root.city.name}}
         </span>
         <a href="" class="city-select__link" @click.prevent="openModal">Я в другом городе</a>
     </section>

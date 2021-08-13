@@ -5,7 +5,7 @@ namespace App\Services\Helpers;
 class GetModelService
 {
     public $models = [
-        'regions' => \App\Models\GeO\Region::class,
+        'regions' => \App\Models\Geo\Region::class,
         'resumes' => \App\Models\Resume\Resume::class,
     ];
     public function getModel($model)
