@@ -7284,7 +7284,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['regions']
+  props: ['regions'],
+  methods: {
+    selectRegion: function selectRegion(id) {
+      this.$emit('select-region', id);
+    }
+  }
 });
 
 /***/ }),
@@ -7354,6 +7359,8 @@ __webpack_require__.r(__webpack_exports__);
       showModal: false,
       current_city: 'Уфа',
       regions: [],
+      cities: [],
+      show_city_list: false,
       city: this.$root.city.name,
       title: "Выберите регион"
     };
@@ -7362,7 +7369,9 @@ __webpack_require__.r(__webpack_exports__);
     selectCity: function selectCity(city) {
       this.$root.city = city;
       axios.post('/api/regions/select-city/' + city.slug);
+      this.closeModal();
     },
+    selectRegion: function selectRegion(id) {},
     openModal: function openModal() {
       this.showModal = true;
       $('#city-modal').modal('show');
@@ -107177,9 +107186,19 @@ var render = function() {
     "ul",
     { staticClass: "modal-regions-list" },
     _vm._l(_vm.regions, function(item, index) {
-      return _c("li", { staticClass: "modal-regions-list__item" }, [
-        _vm._v("\n        " + _vm._s(item.name) + "\n    ")
-      ])
+      return _c(
+        "li",
+        {
+          staticClass: "modal-regions-list__item",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.selectRegion(item.id)
+            }
+          }
+        },
+        [_vm._v("\n        " + _vm._s(item.name) + "\n    ")]
+      )
     }),
     0
   )
@@ -107321,7 +107340,10 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c("regions", { attrs: { regions: _vm.regions } })
+                _c("regions", {
+                  attrs: { regions: _vm.regions },
+                  on: { "select-region": _vm.selectRegion }
+                })
               ],
               1
             )

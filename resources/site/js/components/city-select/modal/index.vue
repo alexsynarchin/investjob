@@ -30,7 +30,7 @@
                                       :placeholder="'Поиск по названию города'" v-model="city">
                         </autocomplete>
                     </div>
-                    <regions :regions="regions"></regions>
+                    <regions :regions="regions" @select-region="selectRegion"></regions>
                 </div>
             </div>
         </div>
@@ -49,6 +49,8 @@ export default {
             showModal:false,
             current_city:'Уфа',
             regions: [],
+            cities:[],
+            show_city_list:false,
             city: this.$root.city.name,
             title:"Выберите регион",
         }
@@ -56,7 +58,12 @@ export default {
     methods: {
         selectCity(city) {
             this.$root.city = city;
-            axios.post('/api/regions/select-city/' + city.slug)
+            axios.post('/api/regions/select-city/' + city.slug);
+            this.closeModal();
+
+        },
+
+        selectRegion(id){
 
         },
         openModal() {

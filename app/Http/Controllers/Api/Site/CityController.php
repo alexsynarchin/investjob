@@ -31,4 +31,6 @@ class CityController extends Controller
         Cookie::queue('city', json_encode($city_data), 10000);
         return $city_data;
     }
+
+
 }
