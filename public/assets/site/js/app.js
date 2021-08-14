@@ -7761,7 +7761,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
   el: '#app',
   data: function data() {
     return {
-      isLoading: false,
+      isLoading: true,
       city: window.App.city
     };
   },
