@@ -38,7 +38,7 @@ const app = new Vue({
     el: '#app',
     data() {
         return {
-            isLoading: true,
+            isLoading: false,
             city:window.App.city
         }
     },

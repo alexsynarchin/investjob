@@ -59,7 +59,10 @@ export default {
     },
     methods: {
         register() {
+            axios.post('/register')
+            .then((response) => {
 
+            })
         }
     }
 

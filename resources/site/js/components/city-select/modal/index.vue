@@ -9,7 +9,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body">
                     <section class="city-modal__heading mb-3">
                         <h5 class="modal-title city-modal__title">{{title}}</h5>
                         <div class="city-modal__heading-controls">
@@ -25,12 +25,13 @@
                             </a>
                         </div>
                     </section>
-                    <div class="mb-3">
+                    <div class="mb-3" v-if="!region_id">
                         <autocomplete @selectName="selectCity" :type="'regions'"
                                       :placeholder="'Поиск по названию города'" v-model="city">
                         </autocomplete>
                     </div>
-                    <regions :regions="regions" @select-region="selectRegion"></regions>
+                    <regions :regions="regions" @select-region="selectRegion" v-if="!region_id"></regions>
+                    <cities :region_id="region_id" v-if="region_id" @select-city="selectCity"></cities>
                 </div>
             </div>
         </div>
@@ -39,40 +40,49 @@
 <script>
 import autocomplete from "@/components/autocomplete/index.vue"
 import regions from "./components/regions";
+import cities from "./components/cities";
 import { bus } from "../bus";
 export default {
     components:{
-        autocomplete,regions
+        autocomplete,regions, cities
+    },
+    computed: {
+        title() {
+            let title = '';
+            if(!this.region_id) {
+                title = "Выберите регион";
+            } else {
+                title = "Выберите город";
+            }
+            return title;
+        }
     },
     data() {
         return {
-            showModal:false,
-            current_city:'Уфа',
             regions: [],
+            region_id:null,
             cities:[],
             show_city_list:false,
-            city: this.$root.city.name,
-            title:"Выберите регион",
+            city: '',
         }
     },
     methods: {
         selectCity(city) {
             this.$root.city = city;
-            axios.post('/api/regions/select-city/' + city.slug);
+            axios.post('/api/regions/select-city/' + city.id);
             this.closeModal();
 
         },
 
         selectRegion(id){
-
+            this.region_id = id;
         },
         openModal() {
-            this.showModal=true;
             $('#city-modal').modal('show');
         },
         closeModal() {
             $('#city-modal').modal('hide');
-                this.city = null;
+
         },
         getRegions() {
             axios.get('/api/regions-list')
@@ -87,7 +97,8 @@ export default {
         var myModalEl = document.getElementById('city-modal');
         let  vm = this;
         myModalEl.addEventListener('hidden.bs.modal', function () {
-            vm.showModal =  false;
+            vm.city = null;
+            vm.region_id = null;
         })
     }
 }

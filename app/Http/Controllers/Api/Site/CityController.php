@@ -15,18 +15,19 @@ class CityController extends Controller
         return $regions;
     }
 
-    public function getCities($region)
+    public function getCities($id)
     {
-        $cities = Region::where('parent_id', '!=', null) -> where('slug', $region) -> get();
+        $cities = Region::where('parent_id', $id) -> get();
         return $cities;
     }
 
-    public function selectCity(Request $request, $slug)
+    public function selectCity(Request $request, $id)
     {
-        $city = Region::where('parent_id', '!=', null) -> where('slug', $slug) -> firstOrFail();
+        $city = Region::findOrFail($id);
         $city_data = [
                         'name' => $city->name,
-                        'slug' => $city -> slug
+                        'slug' => $city -> slug,
+                        'id' =>   $city->id,
                         ];
         Cookie::queue('city', json_encode($city_data), 10000);
         return $city_data;
