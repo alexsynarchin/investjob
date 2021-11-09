@@ -23,7 +23,7 @@ class AdminLoginController extends Controller
         $user = User::where('login', $request->get('login'))->first();
         if (Auth::attempt($credentials) && $user -> hasRole('super-admin')) {
             $request->session()->regenerate();
-            return route('admin.home');
+            return route('admin');
             //return redirect()->intended('dashboard');
         }
         throw ValidationException::withMessages([
