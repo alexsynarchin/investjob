@@ -12,7 +12,7 @@ class AdminLoginController extends Controller
 {
     public function login()
     {
-        return view('admin.auth.login');
+        return view('admin.auth');
     }
     public function handleLogin(Request $request)
     {
@@ -23,7 +23,7 @@ class AdminLoginController extends Controller
         $user = User::where('login', $request->get('login'))->first();
         if (Auth::attempt($credentials) && $user -> hasRole('super-admin')) {
             $request->session()->regenerate();
-            return route('admin');
+            return route('admin.home');
             //return redirect()->intended('dashboard');
         }
         throw ValidationException::withMessages([
