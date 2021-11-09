@@ -17,6 +17,10 @@ class CreateResumesTable extends Migration
             $table->id();
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('CASCADE');
             $table->bigInteger('agent_id')->unsigned()->nullable();
             $table->string('name');
             $table->string('slug');
@@ -24,6 +28,8 @@ class CreateResumesTable extends Migration
             $table->string('driver_license')->nullable();
             $table->string('car')->nullable();
             $table->text('recommendation')->nullable();
+            $table->bigInteger('menuindex')->unsigned()->default(0);
+            $table->bigInteger('import_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

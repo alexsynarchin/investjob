@@ -20,6 +20,7 @@ class CreateRegionsTable extends Migration
             $table->boolean('active')->default(true);
             $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->bigInteger('import_id')->unsigned()->nullable();
+            $table->bigInteger('menuindex')->unsigned()->default(0);
             $table->timestamps();
         });
     }

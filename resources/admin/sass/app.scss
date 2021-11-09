@@ -1,0 +1,12 @@
+@import "~bootstrap/scss/bootstrap";
+@import '~element-ui/lib/theme-chalk/index.css';
+@import "variables";
+//Layout
+@import "layout/base/page-header";
+@import "layout/base/sidebar";
+@import "layout/base/sidevar-nav";
+@import "layout/base/dashboard-content";
+//Components
+@import "components/scaffolding";
+@import "components/auth";
+@import "components/header/page-header-profile";

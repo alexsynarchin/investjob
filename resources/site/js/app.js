@@ -6,6 +6,7 @@ Vue.use(ElementUI);
 import lang from 'element-ui/lib/locale/lang/ru-RU'
 import locale from 'element-ui/lib/locale'
 locale.use(lang);
+
 Vue.component('header-city-select', require('./components/city-select/header/index').default);
 Vue.component('modal-city-select', require('./components/city-select/modal/index').default);
 Vue.component('header-search',require('./components/header-search/index').default);
@@ -38,7 +39,7 @@ const app = new Vue({
     el: '#app',
     data() {
         return {
-            isLoading: true,
+            isLoading: false,
             city:window.App.city
         }
     },

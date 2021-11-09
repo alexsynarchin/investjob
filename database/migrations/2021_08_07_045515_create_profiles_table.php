@@ -20,13 +20,13 @@ class CreateProfilesTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('CASCADE');
-            $table->string('city')->nullable();
+            $table->integer('city_id')->unsigned()->nullable();
             $table->string('phone')->nullable();
             $table->date('birthday')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('family_status')->nullable();
-            $table->string('children')->nullable();
-            $table->string('citizenship')->nullable();
+           //$table->string('gender')->nullable();
+            //$table->string('family_status')->nullable();
+           //$table->string('children')->nullable();
+           //$table->string('citizenship')->nullable();
             $table->timestamps();
         });
     }

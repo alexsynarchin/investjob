@@ -15,10 +15,10 @@ class CreateEduPlacesTable extends Migration
     {
         Schema::create('edu_places', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->index();
-            $table->foreign('user_id')
+            $table->bigInteger('resume_id')->unsigned()->index()->nullable();
+            $table->foreign('resume_id')
                 ->references('id')
-                ->on('users')
+                ->on('resumes')
                 ->onDelete('CASCADE');
             $table->string('name');
             $table->bigInteger('import_id')->unsigned()->nullable();
@@ -26,6 +26,7 @@ class CreateEduPlacesTable extends Migration
             $table->string('diploma')->nullable();
             $table->date('start')->nullable();
             $table->date('end')->nullable();
+            $table->bigInteger('menuindex')->unsigned()->default(0);
             $table->timestamps();
         });
     }

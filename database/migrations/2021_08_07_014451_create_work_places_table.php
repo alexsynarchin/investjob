@@ -16,16 +16,18 @@ class CreateWorkPlacesTable extends Migration
         Schema::create('work_places', function (Blueprint $table) {
             $table->id();
             $table->string('company_name');
-            $table->bigInteger('user_id')->unsigned()->index();
-            $table->text('description')->nullable();
-            $table->foreign('user_id')
+            $table->bigInteger('resume_id')->unsigned()->index()->nullable();
+            $table->foreign('resume_id')
                 ->references('id')
-                ->on('users')
+                ->on('resumes')
                 ->onDelete('CASCADE');
+            $table->text('description')->nullable();
             $table->string('city')->nullable();
             $table->string('speciality') -> nullable();
             $table->date('start')->nullable();
             $table->date('end')->nullable();
+            $table->bigInteger('import_id')->unsigned()->nullable();
+            $table->bigInteger('menuindex')->unsigned()->default(0);
             $table->timestamps();
         });
     }

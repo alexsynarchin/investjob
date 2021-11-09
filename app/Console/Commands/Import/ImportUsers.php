@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands\Import;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Console\Command;
 use DB;
 
@@ -40,9 +42,10 @@ class ImportUsers extends Command
     {
         $users = DB::connection('mysql_import') -> table('b_user') ->  get();
         foreach ($users as $user) {
-            $fields = DB::connection('mysql_import') -> table('b_uts_user')->where('VALUE_ID', $user -> ID) -> first();
-
-            DB::table('users')->insertOrIgnore([
+            $fields = DB::connection('mysql_import') -> table('b_uts_user')
+                ->where('VALUE_ID', $user -> ID) -> first();
+            $profile_type = $this->checkProfileType($fields -> UF_TYPEUSER);
+             DB::table('users')->insertOrIgnore([
                 'login' => $user->LOGIN,
                 'name' => $user->NAME,
                 'surname' => $user->LAST_NAME,
@@ -52,9 +55,31 @@ class ImportUsers extends Command
                 'import_id' => $user->ID,
                 'last_login' => $user->LAST_LOGIN,
                 'active' => $user->ACTIVE === 'Y',
-                'profile_type' =>  $fields -> UF_TYPEUSER ?? '',
+                'profile_type' =>  $profile_type,
             ]);
         }
+        $users = User::all();
+        foreach ($users as $user) {
+            if($user->profile_type){
+                $role = Role::where('slug', $user->profile_type)->first();
+                $user->roles()->attach($role);
+            }
+
+        }
     }
+    private function checkProfileType($type): string
+    {
+        $profile_type = '';
+        if((int) $type === 1) {
+            $profile_type = 'applicant';
+        }
+        if((int) $type === 2) {
+            $profile_type = 'employer';
+        }
+        if((int) $type === 3) {
+            $profile_type = 'agent';
+        }
+        return $profile_type;
+     }
 }
 

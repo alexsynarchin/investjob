@@ -11,16 +11,27 @@ class TestController extends Controller
 {
     public function index()
     {
-        $xml = simplexml_load_file(public_path('xml_import/regions.xml'));
-        $i=0;
-        foreach ($xml ->  Каталог -> Товары -> Товар as $item) {
-            echo $item -> Группы -> Ид;
-            echo "<br>";
-            echo $item->ЗначенияСвойств ->ЗначенияСвойства[1] -> Значение;
-            echo "<br>";
-            echo "<pre>";
-            print_r($item);
-            echo "</pre>";
+        $xml = simplexml_load_file(public_path('xml_import/o_sebe.xml'));
+        /*foreach ($xml -> Классификатор -> Свойства -> Свойство as $item) {
+
+           echo "<pre>";
+           print_r($item);
+           echo "</pre>";
+        }*/
+        $i = 0;
+        foreach ($xml -> Каталог -> Товары -> Товар as $item) {
+            if($i === 3) {
+                break;
+            }
+
+            foreach ($item->ЗначенияСвойств as $option) {
+                echo "<pre>";
+                print_r($item);
+                echo "</pre>";
+            }
+            /*  echo "<pre>";
+              print_r($item->ЗначенияСвойств);
+              echo "</pre>";*/
             $i++;
         }
         /*

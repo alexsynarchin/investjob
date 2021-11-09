@@ -17,7 +17,7 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('site.home.home');
+    return view('site');
 })->name('home');
 
 //Auth
@@ -26,6 +26,10 @@ Route::post('/logout', [LoginController::class, 'logout']) -> name('auth.logout'
 Route::post('/register', [RegisterController::class,'register']) -> name('auth.register');
 Route::post('/auth/select-user-type', [RegisterController::class,'selectUserType']) ->middleware('auth') ->name('auth.select.type');
 
+//Admin login
+use App\Http\Controllers\Auth\AdminLoginController;
+Route::get('/admin/login', [AdminLoginController::class, 'login']) ->middleware('admin-guest') -> name('admin.loginPage');
+Route::post('/admin/login', [AdminLoginController::class, 'handleLogin']) -> name('admin.handleLogin');
 
 //Personal
 Route::get('/kabinet',[DashboardController::class, 'index']) ->name('dashboard.index');
